@@ -1,14 +1,31 @@
 const socket=io();
 
+const $messageForm=document.querySelector('#message-form');
+const $messageFormInput=$messageForm.querySelector('input');
+const $messageFormButton=$messageForm.querySelector('button');
+const $messages=document.querySelector('#messages')
+
+//choosing the 
+const messageTemplate=document.querySelector('#message-template').innerHTML
+
+
+
+
 
 socket.on('welcome',(message)=>{
     console.log(message);
+    const html=Mustache.render(messageTemplate,{
+        message
+    });
+    $messages.insertAdjacentHTML("beforeend",html);
+
 })
 
 
 
-document.querySelector('#message-form').addEventListener('submit',(e)=>{
+$messageForm.addEventListener('submit',(e)=>{
     e.preventDefault();
+    // $messageFormButton.setAttribute('disabled','disabled');
     const msg=document.querySelector('input').value;
     // const msg=e.target.elements.message.value;
     socket.emit('messages',msg,(m)=>{

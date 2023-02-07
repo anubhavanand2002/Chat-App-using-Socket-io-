@@ -8,6 +8,12 @@
 </head>
 <body>
     <h1>Chat App is running using html file</h1>
+    
+
+    
+    <div id="messages"></div>
+
+
     <!-- <button id="increment">increase</button> -->
     <form id="message-form">
         <input placeholder="Message"></input>
@@ -15,9 +21,35 @@
         <button>Send The Message</button>
     </form>
     <button id="send_location">Send My location</button>
+    
+    
+    <script id="message-template" type="text/html">
+       <div>
+          <p>{{message}}</p>
+       </div>
+    </script>
+
+     
+    <script id="location-template" type="text/html">
+        <div>
+           <p>{{location}}</p>
+        </div>
+     </script>
 
 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
 </body>
 </html>
+
+
+
+<!-- var template = "Hello {{name}}!";
+var data = { name: "John Doe" };
+var output = Mustache.render(template, data);
+console.log(output);  -->
